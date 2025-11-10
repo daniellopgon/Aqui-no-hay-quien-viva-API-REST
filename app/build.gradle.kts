@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.retrofit)
+    implementation(libs.coil)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)

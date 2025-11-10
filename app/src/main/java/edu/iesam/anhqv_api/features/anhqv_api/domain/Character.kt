@@ -10,5 +10,6 @@ data class Character(
     val secondSurname: String,
     val shortname: String,
     @SerializedName("image_url")
-    val imageUrl: String
+    val imageUrl: String,
+    val slug: String
 )

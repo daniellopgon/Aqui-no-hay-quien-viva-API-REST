@@ -25,6 +25,24 @@ class ApiRemoteDataSource(private val api: ApiClient) {
                 }
             }
         }
+    }
 
+    suspend fun getCharacterById(slug:String): Result<CharacterApiModel> {
+        return withContext(Dispatchers.IO) {
+
+            val apiService = api.createService(ApiService::class.java)
+            val response = apiService.getCharacterById(slug)
+
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!)
+            } else {
+                val error = error("Error de red")
+                when (error) {
+                    is ErrorApp.InternetError -> Result.failure(ErrorApp.InternetError)
+                    is ErrorApp.SeverError -> Result.failure(ErrorApp.SeverError)
+                    else -> Result.failure(ErrorApp.UnknownError)
+                }
+            }
+        }
     }
 }

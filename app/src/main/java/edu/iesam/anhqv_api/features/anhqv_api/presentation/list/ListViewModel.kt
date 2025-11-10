@@ -7,23 +7,31 @@ import edu.iesam.anhqv_api.features.anhqv_api.domain.ErrorApp
 import edu.iesam.anhqv_api.features.anhqv_api.domain.GetAllCharactersUseCase
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import edu.iesam.anhqv_api.features.anhqv_api.domain.Character
+import edu.iesam.anhqv_api.features.anhqv_api.presentation.CharacterUiState
 
-class LatestNewsViewModel(
+class ListViewModel(
     private val getAllCharactersUseCase: GetAllCharactersUseCase
 ) : ViewModel() {
 
-    data class CharacterUiState(
-        val loading : Boolean = false,
-        val error : ErrorApp? = null,
-        val done : List<Character>? = null
-    )
     private val _uiState = MutableLiveData<CharacterUiState>()
     val uiState: LiveData<CharacterUiState> = _uiState
 
     fun loadCharacters() {
         viewModelScope.launch {
-            val characters = getAllCharactersUseCase.invoke()
             _uiState.value = CharacterUiState(loading = true)
+            getAllCharactersUseCase().fold(
+                { onSuccess(it) },
+                { onError(it as ErrorApp) }
+            )
         }
+    }
+
+    private fun onSuccess(characters: List<Character>) {
+        _uiState.value = CharacterUiState(done = characters)
+    }
+
+    private fun onError(error: ErrorApp) {
+        _uiState.value = CharacterUiState(error = error)
     }
 }

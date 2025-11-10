@@ -1,18 +1,18 @@
-package edu.iesam.anhqv_api.features.anhqv_api.presentation.list
+package edu.iesam.anhqv_api.features.anhqv_api.presentation.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import edu.iesam.anhqv_api.databinding.ListFragmentBinding
+import edu.iesam.anhqv_api.databinding.DetailFragmentBinding
 import edu.iesam.anhqv_api.features.anhqv_api.core.api.ApiClient
 import edu.iesam.anhqv_api.features.anhqv_api.data.CharacterDataRepository
 import edu.iesam.anhqv_api.features.anhqv_api.data.remote.api.ApiRemoteDataSource
-import edu.iesam.anhqv_api.features.anhqv_api.domain.GetAllCharactersUseCase
+import edu.iesam.anhqv_api.features.anhqv_api.domain.GetCharacterByIdUseCase
 
-class ListFragment : Fragment() {
-    private var _binding: ListFragmentBinding? = null
+class DetailFragment : Fragment() {
+    private var _binding: DetailFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,13 +20,13 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ListFragmentBinding.inflate(inflater, container, false)
+        _binding = DetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
-    private val listViewModel = ListViewModel(
-        GetAllCharactersUseCase(
+    private val detailViewModel = DetailViewModel(
+        GetCharacterByIdUseCase(
             CharacterDataRepository(
                 ApiRemoteDataSource(
                     ApiClient()
@@ -34,7 +34,6 @@ class ListFragment : Fragment() {
             )
         )
     )
-
 
     override fun onDestroyView() {
         super.onDestroyView()
