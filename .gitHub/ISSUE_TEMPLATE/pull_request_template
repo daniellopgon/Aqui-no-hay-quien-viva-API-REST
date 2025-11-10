@@ -1,0 +1,55 @@
+---
+name: Feature Template
+about: Main feature template
+title: "[Feature]: "
+labels: ["feature"]
+projects: ["EyeSense"]
+assignees: ''
+---
+
+## 🤔 Brief Description of the Problem to Solve
+<!--
+Goal: Ensure the problem to be solved is fully understood.
+-->
+
+---
+
+## 💡 Process Followed to Solve the Problem
+<!--
+Describe the steps you followed to solve the problem: official documentation, forums, AI tools, etc.
+-->
+
+---
+
+## 👩‍💻 Technical Summary of the Solution
+<!--
+Describe the logical steps you followed to implement the solution, not just the changes made. For example:
+1. Added dependency X.
+2. Created a model to fetch data from the API.
+3. Created a use case to manage X.
+4. Displayed the retrieved list from the API in a RecyclerView.
+-->
+
+---
+
+## 📸 Screenshot or Video
+<!-- Visual evidence showing the result of the implementation -->
+
+---
+
+## ✋ Additional Notes (Disclaimer)
+<!-- Is there anything unexpected or noteworthy reviewers should know? -->
+
+---
+
+## 🌈 Add a GIF that Represents this PR
+<!-- How did you feel while developing this PR? -->
+
+---
+
+## ✅ Checklist
+- [ ] The branch name follows the correct format: issue_type/issue_number/description.
+- [ ] I have added a descriptive title to the PR.
+- [ ] I have assigned myself as the author.
+- [ ] I have assigned two reviewers.
+- [ ] I have linked this PR to the related Issue.
