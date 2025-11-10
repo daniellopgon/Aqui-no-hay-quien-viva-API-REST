@@ -7,6 +7,10 @@ android {
     namespace = "edu.iesam.anhqv_api"
     compileSdk {
         version = release(36)
+
+        buildFeatures {
+            viewBinding = true
+        }
     }
 
     defaultConfig {
@@ -40,6 +44,8 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.retrofit)
